@@ -1,0 +1,578 @@
+#root {
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  min-height: 100vh;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow-y: scroll;
+}
+
+/* Section Scroll Animations */
+.section-hidden {
+  opacity: 0;
+  transform: translateY(60px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.section-visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+/* Title animations within sections */
+.section-visible h1,
+.section-visible h2 {
+  animation: slideInUp 0.8s ease forwards;
+}
+
+.section-visible p {
+  animation: slideInUp 0.8s ease 0.2s forwards;
+  opacity: 0;
+}
+
+.section-visible button {
+  animation: slideInUp 0.8s ease 0.4s forwards;
+  opacity: 0;
+}
+
+.section-visible .search-bar-container {
+  animation: slideInUp 0.8s ease 0.3s forwards;
+  opacity: 0;
+}
+
+.section-visible .search-bar-container input,
+.section-visible .search-bar-container button,
+.section-visible .search-bar-container>div {
+  animation: none !important;
+  opacity: 1 !important;
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Album Card Wrapper Animations */
+.album-card-wrapper {
+  opacity: 0;
+  transform: translateY(50px) scale(0.9);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.album-card-wrapper.album-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Album Card Hover Effects */
+.album-card:hover .album-image {
+  transform: scale(1.1);
+}
+
+.album-card:hover .album-overlay {
+  opacity: 1 !important;
+}
+
+.album-card:hover .album-actions {
+  opacity: 1 !important;
+}
+
+.album-card:hover .album-play {
+  opacity: 1 !important;
+}
+
+/* Navigation animations on load */
+.section-visible .scroll-indicator {
+  animation: fadeInDelay 1s ease 0.8s forwards;
+  opacity: 0;
+}
+
+/* Side navigation dots fade in */
+.side-nav-dots {
+  animation: fadeInRightDots 1s ease 0.5s forwards;
+  opacity: 0;
+}
+
+/* Top corner links fade in */
+.top-corner-links {
+  animation: fadeInRight 1s ease 0.3s forwards;
+  opacity: 0;
+}
+
+@keyframes fadeInDelay {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRightDots {
+  from {
+    opacity: 0;
+    right: 10px;
+  }
+
+  to {
+    opacity: 1;
+    right: 30px;
+  }
+}
+
+/* Scroll Down Animation */
+@keyframes scrollDown {
+  0% {
+    opacity: 0;
+    height: 20px;
+  }
+
+  50% {
+    opacity: 1;
+    height: 40px;
+  }
+
+  100% {
+    opacity: 0;
+    height: 60px;
+  }
+}
+
+/* Collapsible Search Bar Animations */
+@keyframes pulseGlow {
+
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(29, 185, 84, 0.4);
+  }
+
+  50% {
+    box-shadow: 0 0 0 10px rgba(29, 185, 84, 0);
+  }
+}
+
+/* Search bar focus animation */
+.search-bar-container input:focus {
+  animation: inputFocus 0.3s ease;
+}
+
+@keyframes inputFocus {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.02);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #1DB954;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+
+/* Large Desktop (1920px and above) */
+@media (min-width: 1920px) {
+  #root {
+    max-width: 100%;
+  }
+}
+
+/* Desktop (1024px - 1919px) - Default styles work well */
+
+/* Tablet Landscape (768px - 1023px) */
+@media (max-width: 1023px) {
+
+  /* Side Navigation Dots */
+  .side-nav-dots {
+    right: 15px !important;
+  }
+
+  /* Top Corner Links */
+  .top-corner-links {
+    right: 50px !important;
+    top: 20px !important;
+  }
+
+  /* Hero Section */
+  section h1 {
+    font-size: 4rem !important;
+    letter-spacing: 6px !important;
+  }
+
+  /* Search Section */
+  section h2 {
+    font-size: 3rem !important;
+    letter-spacing: 5px !important;
+  }
+
+  /* Album Grid */
+  section>div>div[style*="grid"] {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)) !important;
+    gap: 20px !important;
+  }
+}
+
+/* Tablet Portrait (481px - 767px) */
+@media (max-width: 767px) {
+
+  /* Hide side navigation dots on tablets/mobile */
+  .side-nav-dots {
+    display: none !important;
+  }
+
+  /* Top Corner Links */
+  .top-corner-links {
+    top: 15px !important;
+    right: 15px !important;
+  }
+
+  .top-corner-links a {
+    font-size: 12px !important;
+  }
+
+  /* Hero Section */
+  section h1 {
+    font-size: 3rem !important;
+    letter-spacing: 4px !important;
+    line-height: 1.2 !important;
+  }
+
+  section p {
+    font-size: 0.85rem !important;
+    letter-spacing: 1px !important;
+  }
+
+  /* Search Bar Container */
+  .search-bar-container>div>div {
+    max-width: 90vw !important;
+  }
+
+  /* Expanded search bar */
+  .search-bar-container>div>div[style*="540px"] {
+    width: 90vw !important;
+    max-width: 450px !important;
+  }
+
+  /* Search input */
+  .search-bar-container input {
+    width: 100% !important;
+    font-size: 13px !important;
+  }
+
+  /* Section Titles */
+  section h2 {
+    font-size: 2.5rem !important;
+    letter-spacing: 3px !important;
+  }
+
+  /* Section Padding */
+  section {
+    padding: 60px 20px !important;
+  }
+
+  /* Album Grid */
+  section>div>div[style*="grid"] {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)) !important;
+    gap: 15px !important;
+  }
+
+  /* Scroll Indicator */
+  .scroll-indicator {
+    font-size: 10px !important;
+  }
+
+  .scroll-indicator>div {
+    height: 30px !important;
+  }
+}
+
+/* Mobile Landscape (481px - 767px in landscape) */
+@media (max-width: 767px) and (orientation: landscape) {
+  section h1 {
+    font-size: 2.5rem !important;
+    letter-spacing: 3px !important;
+  }
+
+  section {
+    padding: 40px 20px !important;
+  }
+
+  /* Make sections take less height in landscape */
+  section[style*="minHeight: \"100vh\""] {
+    min-height: auto !important;
+    padding: 60px 20px !important;
+  }
+}
+
+/* Mobile Portrait (320px - 480px) */
+@media (max-width: 480px) {
+
+  /* Top Corner Links */
+  .top-corner-links {
+    gap: 15px !important;
+  }
+
+  .top-corner-links a {
+    font-size: 11px !important;
+  }
+
+  /* Hero Section */
+  section h1 {
+    font-size: 2.5rem !important;
+    letter-spacing: 2px !important;
+    margin-bottom: 15px !important;
+  }
+
+  section p {
+    font-size: 0.75rem !important;
+    letter-spacing: 0.5px !important;
+    margin-top: 15px !important;
+  }
+
+  /* Divider line */
+  section>div>div[style*="width: \"60px\""] {
+    width: 40px !important;
+    margin: 25px auto !important;
+  }
+
+  /* Search Button in collapsed state */
+  .search-bar-container button[style*="56px"] {
+    width: 50px !important;
+    height: 50px !important;
+  }
+
+  /* Expanded search bar */
+  .search-bar-container>div>div[style*="540px"] {
+    width: 90vw !important;
+    max-width: 100% !important;
+    height: 50px !important;
+  }
+
+  /* Search icon button when expanded */
+  .search-bar-container button[style*="minWidth"] {
+    min-width: 50px !important;
+    height: 50px !important;
+  }
+
+  /* Search input */
+  .search-bar-container input {
+    font-size: 12px !important;
+    padding: 0 15px !important;
+  }
+
+  /* Action buttons in search */
+  .search-bar-container button[style*="50px"] {
+    width: 40px !important;
+    height: 40px !important;
+    font-size: 14px !important;
+  }
+
+  .search-bar-container button[style*="40px"] {
+    width: 35px !important;
+    height: 35px !important;
+    font-size: 16px !important;
+  }
+
+  /* Section Titles */
+  section h2 {
+    font-size: 2rem !important;
+    letter-spacing: 2px !important;
+  }
+
+  /* Section Padding */
+  section {
+    padding: 40px 15px !important;
+  }
+
+  /* Album Grid */
+  section>div>div[style*="grid"] {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)) !important;
+    gap: 12px !important;
+    padding: 15px 0 !important;
+  }
+
+  /* Album Card Text */
+  .album-overlay h3 {
+    font-size: 12px !important;
+  }
+
+  .album-overlay div {
+    font-size: 10px !important;
+  }
+
+  /* Action Buttons on Albums */
+  .album-actions>div {
+    width: 28px !important;
+    height: 28px !important;
+    font-size: 14px !important;
+  }
+
+  .album-play {
+    width: 45px !important;
+    height: 45px !important;
+    font-size: 16px !important;
+  }
+
+  /* Scroll Indicator */
+  .scroll-indicator {
+    font-size: 9px !important;
+    bottom: 20px !important;
+  }
+
+  .scroll-indicator>div {
+    height: 25px !important;
+  }
+}
+
+/* Extra Small Mobile (below 375px) */
+@media (max-width: 374px) {
+  section h1 {
+    font-size: 2rem !important;
+    letter-spacing: 1px !important;
+  }
+
+  section h2 {
+    font-size: 1.5rem !important;
+    letter-spacing: 1px !important;
+  }
+
+  section p {
+    font-size: 0.7rem !important;
+  }
+
+  /* Album Grid - 2 columns on very small screens */
+  section>div>div[style*="grid"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
+  }
+
+  /* Search bar adjustments */
+  .search-bar-container>div>div[style*="540px"] {
+    width: 95vw !important;
+  }
+}
+
+/* iPad Pro and Large Tablets (1024px - 1366px) */
+@media (min-width: 1024px) and (max-width: 1366px) {
+  section h1 {
+    font-size: 5rem !important;
+    letter-spacing: 8px !important;
+  }
+
+  section h2 {
+    font-size: 3.5rem !important;
+    letter-spacing: 6px !important;
+  }
+
+  section>div>div[style*="grid"] {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)) !important;
+  }
+}
+
+/* Landscape Orientation - General Adjustments */
+@media (orientation: landscape) and (max-height: 600px) {
+  section {
+    min-height: auto !important;
+    padding: 40px 20px !important;
+  }
+
+  section h1 {
+    font-size: 2.5rem !important;
+    margin-bottom: 10px !important;
+  }
+
+  section h2 {
+    font-size: 2rem !important;
+    margin-bottom: 10px !important;
+  }
+
+  .scroll-indicator {
+    display: none !important;
+  }
+}
+
+/* ===== GLASS AUTH PANEL RESPONSIVE ===== */
+
+/* Tablet Portrait (481px - 767px) */
+@media (max-width: 767px) {
+
+  /* Glass auth panel */
+  section>div>div>div[style*="linear-gradient"][style*="backdropFilter"] {
+    padding: 30px 25px !important;
+    max-width: 90% !important;
+  }
+
+  section>div>div>div[style*="linear-gradient"] h3 {
+    font-size: 1.2rem !important;
+  }
+
+  section>div>div>div[style*="linear-gradient"] p {
+    font-size: 0.8rem !important;
+  }
+}
+
+/* Mobile Portrait (320px - 480px) */
+@media (max-width: 480px) {
+
+  /* Glass auth panel buttons */
+  section>div>div>div[style*="linear-gradient"]>div {
+    flex-direction: column !important;
+    width: 100% !important;
+  }
+
+  section>div>div>div[style*="linear-gradient"] button {
+    width: 100% !important;
+    padding: 12px 25px !important;
+    font-size: 0.85rem !important;
+  }
+}
